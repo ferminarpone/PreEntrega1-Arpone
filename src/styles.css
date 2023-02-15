@@ -1,0 +1,16 @@
+#carrito{ 
+  position: relative;
+}
+
+#carrito p{
+    position: absolute;
+    bottom: 2px;
+    text-align: center;
+    font-size: 10px;
+    font-weight: bold;   
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    background-color: rgb(69, 111, 173);
+    color: aliceblue;
+}

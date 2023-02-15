@@ -1,17 +1,42 @@
-import CartWidget from './CartWidget'
+import CartWidget from "./CartWidget";
+import icono from "../assets/img/logo.png";
+import {
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
+  Flex,
+  Spacer,
+  Box,
+  Text,
+  Image,
+} from "@chakra-ui/react";
 
 function NavBar() {
   return (
-    <div>
-      <h4>El Galpon de Nino</h4>
-      <ul>
-        <button>Home</button>
-        <button>Productos</button>
-        <button>Nosotros</button>
-        <button>Contacto</button>
-      </ul>
-      <CartWidget/>
-    </div>
+    <>
+      <Flex>
+        <Image boxSize="45px" src={icono} alt="Dan Abramov" ml="2" mt="2" />
+        <Box p="4">
+          <Text fontSize="20px">EL GALPON DE NINO</Text>
+        </Box>
+        <Spacer />
+        <Box p="4">
+          <Tabs align="end">
+            <TabList>
+              <Tab fontSize="16px">Home</Tab>
+              <Tab fontSize="16px">Productos</Tab>
+              <Tab fontSize="16px">Nosotros</Tab>
+              <Tab fontSize="16px">Contacto</Tab>
+              <Tab fontSize="16px">
+                <CartWidget />
+              </Tab>
+            </TabList>
+          </Tabs>
+        </Box>
+      </Flex>
+    </>
   );
 }
 

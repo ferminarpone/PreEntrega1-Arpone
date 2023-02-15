@@ -1,12 +1,16 @@
 import { BsCartFill } from "react-icons/bs";
+import '../styles.css'
 
 function CartWidget() {
   return (
     <>
-    <BsCartFill/>
-    <span>4</span>
+      
+      <BsCartFill class="icon"/>
+      <div id="carrito">
+      <p>4</p> 
+      </div>  
     </>
-  )
+  );
 }
 
-export default CartWidget
+export default CartWidget;
