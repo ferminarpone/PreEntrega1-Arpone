@@ -1,14 +1,12 @@
-import { BsCartFill } from "react-icons/bs";
-import '../styles.css'
+import { FaMotorcycle } from "react-icons/fa";
 
 function CartWidget() {
   return (
     <>
-      
-      <BsCartFill class="icon"/>
       <div id="carrito">
-      <p>4</p> 
-      </div>  
+        <p>4</p>
+        <FaMotorcycle className="logoCart" fontSize="28" />
+      </div>
     </>
   );
 }

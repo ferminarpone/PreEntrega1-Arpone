@@ -1,10 +1,9 @@
 import NavBar from "./components/NavBar";
 import ItemListContainer from "./components/ItemListContainer";
 import { ChakraProvider } from "@chakra-ui/react";
-import './styles.css'
 
 function App() {
-  const saludo = "Bienvenidos al galpon de Nino";
+  const saludo = "Bienvenido a tu sitio de motos";
   return (
     <>
       <ChakraProvider>
@@ -14,6 +13,5 @@ function App() {
     </>
   );
 }
-
 
 export default App;
