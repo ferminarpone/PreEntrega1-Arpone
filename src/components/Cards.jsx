@@ -1,4 +1,4 @@
-import DB from "../assets/DB.json";
+import DB from "../DB.json";
 import { useState, useEffect } from "react";
 import {
   Card,
@@ -28,17 +28,15 @@ function Cards() {
   return (
     <>
       <Container maxW="6xl">
-        <Grid templateColumns=
-        {{ sm: "repeat(2, 1fr)", md: "repeat(3, 1fr)"}}
-         gap="6">
+        <Grid
+          templateColumns={{ sm: "repeat(2, 1fr)", md: "repeat(3, 1fr)" }}
+          gap="6"
+        >
           {cards.map((card) => (
             <GridItem w="100%" key={card.id}>
               <Card maxW="100%" height="100%">
                 <CardBody>
-                  <Image
-                    src={card.img}
-                    alt={`MOTO ` + card.nombre}
-                  />
+                  <Image src={card.img} alt={`MOTO ` + card.nombre} />
                   <Stack mt="4" spacing="2">
                     <Heading size="sm">{card.nombre}</Heading>
                     <Text color="gray" fontSize="md">
@@ -48,11 +46,14 @@ function Cards() {
                 </CardBody>
                 <Divider />
                 <CardFooter>
-                    
-                  <Button variant="solid" colorScheme="gray" m="auto"  color="brown">
+                  <Button
+                    variant="solid"
+                    colorScheme="gray"
+                    m="auto"
+                    color="brown"
+                  >
                     Add to cart
                   </Button>
-                  
                 </CardFooter>
               </Card>
             </GridItem>

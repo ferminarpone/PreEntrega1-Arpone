@@ -1,7 +1,6 @@
 import NavBar from "./components/NavBar";
 import ItemListContainer from "./components/ItemListContainer";
 import { ChakraProvider } from "@chakra-ui/react";
-
 function App() {
   // Prop para ItemListContainer
   const saludo = "Bienvenido a tu sitio de motos";

@@ -3,14 +3,13 @@ import ItemCount from "./ItemCount";
 import Cards from "./Cards";
 
 function ItemListContainer({ greeting }) {
-  const stock = 15;
-
+  const stock = 5;
   return (
     <div id="Item">
       <Heading textAlign="center" fontSize="2xl" p="10" color="aliceblue">
         {greeting}
       </Heading>
-      {/* <ItemCount stock={stock} /> */}
+      <ItemCount stock={stock} />
       <Cards />
     </div>
   );
