@@ -1,44 +1,53 @@
 #navBar{
   background-color:brown;
-  height: 60px;
+  height: 75px;
+  display: flex;
+  align-items: center;
 }
 
 #navBar .menuButton{
-  margin-top: 8px;
   font-weight:bold;
   background-color: brown;
-}
-
-#navBar .menuList{ 
-  background-color: brown;
-  border: none;
-  border-radius: none;
-}
+} 
 
 #carrito{
-  width: 120px;
+  width: 150px;
   display: flex;
-  position: relative;
   align-items: center;
+  justify-content: end;
   margin-right: 14px;
   margin-top: 6px;
 }
+
+#carrito .buttonCart {
+  display: flex;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  position: relative;
+  background-color: brown;
+}
+
 
 #carrito .logoCart{
 position: absolute;
 right: 14px ;
 }
 
-#carrito p{
+#carrito span{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  bottom:7px;
+  bottom:30px;
   right: 2px;
-  width: 16px;
-  text-align: center;
-  font-size: 10px;
+  width: 17px;
+  font-size: 9px;
   font-weight: bold; 
   border-radius: 50%;
-  height: 16px;
+  height: 17px;
   background-color: rgb(37, 39, 39);
   color: aliceblue;
 }
+
+

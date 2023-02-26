@@ -16,7 +16,7 @@ function NavBar() {
   return (
     <>
       <Flex id="navBar">
-        <Image boxSize="150" height="50" src={icono} alt="Dan Abramov" mt="1" />
+        <Image boxSize="200" height="50" src={icono} alt="Dan Abramov" />
         <Spacer />
         <Menu>
           <MenuButton
@@ -57,9 +57,7 @@ function NavBar() {
           </MenuList>
         </Menu>
         <Spacer />
-        <button>
           <CartWidget />
-        </button>
       </Flex>
     </>
   );
