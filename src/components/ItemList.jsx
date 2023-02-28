@@ -9,17 +9,19 @@ function ItemList({ product }) {
           templateColumns={{ sm: "repeat(2, 1fr)", md: "repeat(3, 1fr)" }}
           gap="6"
         >
-          {product.map((pr) => (
-            <Item
-              key={pr.id}
-              nombre={pr.nombre}
-              categoria={pr.categoria}
-              precio={pr.precio}
-              id={pr.id}
-              stock={pr.stock}
-              img={pr.img}
-            />
-          ))}
+          {product.map((pr) => {
+            return (
+              <Item
+                key={pr.id}
+                nombre={pr.nombre}
+                categoria={pr.categoria}
+                precio={pr.precio}
+                id={pr.id}
+                stock={pr.stock}
+                img={pr.img}
+              />
+            );
+          })}
         </Grid>
       </Container>
     </>
