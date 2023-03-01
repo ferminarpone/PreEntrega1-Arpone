@@ -1,5 +1,5 @@
 import CartWidget from "./CartWidget";
-import icono from "../assets/img/logo.png";
+import icono from "../assets/img/logo_darkbg.png";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import {
   Button,
@@ -16,7 +16,7 @@ function NavBar() {
   return (
     <>
       <Flex id="navBar">
-        <Image boxSize="200" height="50" src={icono} alt="Dan Abramov" />
+        <Image ml="5" height="30px" w="150" src={icono} alt="Dan Abramov" />
         <Spacer />
         <Menu>
           <MenuButton
@@ -27,7 +27,7 @@ function NavBar() {
             MOTOS
           </MenuButton>
           <MenuList>
-            <MenuItem
+            <MenuItem color="rgb(37, 39, 39)"
               _hover={{
                 color: "brown",
               }}
@@ -36,7 +36,7 @@ function NavBar() {
             >
               ROADSTERS
             </MenuItem>
-            <MenuItem
+            <MenuItem color="rgb(37, 39, 39)"
               _hover={{
                 color: "brown",
               }}
@@ -45,7 +45,7 @@ function NavBar() {
             >
               ADVENTURE
             </MenuItem>
-            <MenuItem
+            <MenuItem color="rgb(37, 39, 39)"
               _hover={{
                 color: "brown",
               }}

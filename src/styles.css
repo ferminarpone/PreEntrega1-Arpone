@@ -1,5 +1,6 @@
 #navBar{
-  background-color:brown;
+  background-color: rgb(37, 39, 39);
+  color: aliceblue;
   height: 75px;
   display: flex;
   align-items: center;
@@ -7,7 +8,7 @@
 
 #navBar .menuButton{
   font-weight:bold;
-  background-color: brown;
+  background-color: rgb(37, 39, 39);
 } 
 
 #carrito{
@@ -25,7 +26,7 @@
   width: 50px;
   height: 50px;
   position: relative;
-  background-color: brown;
+  background-color: rgb(37, 39, 39);
 }
 
 
@@ -46,7 +47,7 @@ right: 14px ;
   font-weight: bold; 
   border-radius: 50%;
   height: 17px;
-  background-color: rgb(37, 39, 39);
+  background-color: brown;
   color: aliceblue;
 }
 
