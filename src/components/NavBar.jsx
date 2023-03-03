@@ -1,6 +1,7 @@
 import CartWidget from "./CartWidget";
 import icono from "../assets/img/logo_darkbg.png";
 import { ChevronDownIcon } from "@chakra-ui/icons";
+import { Link } from "react-router-dom";
 import {
   Button,
   Menu,
@@ -16,7 +17,9 @@ function NavBar() {
   return (
     <>
       <Flex id="navBar">
-        <Image ml="5" height="30px" w="150" src={icono} alt="Dan Abramov" />
+        <Link to={"/"}>
+        <Image ml="5" height="30px" w="150" src={icono} alt="Logo Triumph" />
+        </Link>
         <Spacer />
         <Menu>
           <MenuButton
@@ -27,37 +30,63 @@ function NavBar() {
             MOTOS
           </MenuButton>
           <MenuList>
-            <MenuItem color="rgb(37, 39, 39)"
+            <Link to={"/catalogue"}>
+            <MenuItem
+              color="rgb(37, 39, 39)"
               _hover={{
                 color: "brown",
               }}
               fontWeight="bold"
               fontSize="14"
             >
-              ROADSTERS
+              CATALOGO COMPLETO
             </MenuItem>
-            <MenuItem color="rgb(37, 39, 39)"
+            </Link>
+            <Link to={`/category/${"ROADSTERS"}`}>
+            <MenuItem
+              color="rgb(37, 39, 39)"
               _hover={{
                 color: "brown",
               }}
               fontWeight="bold"
               fontSize="14"
+              pl="4"
             >
-              ADVENTURE
+              - ROADSTERS
             </MenuItem>
-            <MenuItem color="rgb(37, 39, 39)"
+            </Link>
+            <Link to={`/category/${"ADVENTURE"}`}>
+            <MenuItem
+              color="rgb(37, 39, 39)"
               _hover={{
                 color: "brown",
               }}
               fontWeight="bold"
               fontSize="14"
+              pl="4"
             >
-              MODERN CLASSICS
+              - ADVENTURE
             </MenuItem>
+            </Link>
+            <Link to={`/category/${"MODERN CLASSICS"}`}>
+            <MenuItem
+              color="rgb(37, 39, 39)"
+              _hover={{
+                color: "brown",
+              }}
+              fontWeight="bold"
+              fontSize="14"
+              pl="4"
+            >
+              - MODERN CLASSICS
+            </MenuItem>
+            </Link>
           </MenuList>
         </Menu>
         <Spacer />
+        <Link to={"/cart"}>
           <CartWidget />
+        </Link>
       </Flex>
     </>
   );
