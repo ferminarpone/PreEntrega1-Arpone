@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom'
+import ItemCount from './ItemCount'
 import {
   Card,
   Stack,
@@ -13,13 +14,14 @@ import {
 
 function ItemDetail({ product }) {
   return (
-    <Container maxW="6xl">
+    <Container maxW="5xl">
       <Card
         direction={{ base: "column", md: "row" }}
         overflow="hidden"
         variant="outline"
         width="100%"
         height="100%"
+        border="none" 
       >
         <Image
           objectFit="cover"
@@ -35,9 +37,10 @@ function ItemDetail({ product }) {
             <Text py="2">{product.descripcion}</Text>
           </CardBody>
 
-          <CardFooter>
+          <CardFooter display="flex" justifyContent="space-between">
+           <ItemCount stock={product.stock}/>
             <Link to={"/cart"}>
-              <Button variant="solid" colorScheme="gray" m="auto" color="brown">
+              <Button  variant="solid" colorScheme="gray" h="8" w="20" p="0" fontSize="12" color="brown">
                 Add to cart
               </Button>
             </Link>

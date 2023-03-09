@@ -1,12 +1,13 @@
 import data from "../data.json";
 import { useState, useEffect } from "react";
 import ItemDetail from "./ItemDetail";
-import {useParams} from 'react-router-dom';
+import { useParams } from "react-router-dom";
+import {Box} from '@chakra-ui/react'
 
 function ItemDetailContainer() {
   const [product, setProduct] = useState([]);
-console.log(product)
-  const {id} = useParams();
+  console.log(product);
+  const { id } = useParams();
 
   console.log(id);
 
@@ -16,9 +17,8 @@ console.log(product)
 
   const getCards = () => {
     return new Promise((resolve, reject) => {
-
       resolve(data);
-/*      No es mas necesario el setTimeout
+      /*      No es mas necesario el setTimeout
      setTimeout(() => {
         resolve(data);
       }, 2000); */
@@ -35,10 +35,11 @@ console.log(product)
       console.error("No se encontraron datos");
     }
   };
-  
 
   return (
+    <Box  h="646" display="flex" alignItems="center">
       <ItemDetail product={product} />
+    </Box>
   );
 }
 

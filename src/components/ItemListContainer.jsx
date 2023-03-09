@@ -5,8 +5,6 @@ import ItemList from "./ItemList";
 import {useParams} from 'react-router-dom';
 
 function ItemListContainer() {
-  const stock = 5;
-
   const [product, setProduct] = useState([]);
   const {category} = useParams();
    console.log(category);
@@ -38,7 +36,7 @@ function ItemListContainer() {
 
   return (
     <>
-      {/* <ItemCount stock={stock} />  */}
+      
       {category? <ItemList product={filterCat} categoria={category} /> : <ItemList product={product} />}
       
     </>
