@@ -6,7 +6,7 @@ const CartContext = ({children}) => {
   const [cart, setCart] = useState([]);
 
 
-
+console.log(cart)
 
   return (
     <CarritoContext.Provider value={{ cart, setCart }}>

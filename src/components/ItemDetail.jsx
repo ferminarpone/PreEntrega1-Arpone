@@ -1,24 +1,17 @@
-import {Link} from 'react-router-dom';
 import ItemCount from './ItemCount';
 import {
   Card,
   Stack,
   Heading,
   Text,
-  Button,
   CardBody,
   CardFooter,
   Image,
   Container,
 } from "@chakra-ui/react";
 
- import {CarritoContext} from '../context/CartContext';
- import {useContext} from 'react';
 
 function ItemDetail({ product }) {
-
- const {cart, setCart} = useContext(CarritoContext);
- console.log(cart)
 
   return (
     <Container maxW="5xl">
@@ -40,17 +33,15 @@ function ItemDetail({ product }) {
         <Stack>
           <CardBody>
             <Heading size="md">{product.nombre}</Heading>
-
             <Text py="2">{product.descripcion}</Text>
           </CardBody>
-
           <CardFooter display="flex" justifyContent="space-between">
-           <ItemCount stock={product.stock}/>
-            {/* AGREGAR <Link to={"/cart"}> */}
-              <Button  variant="solid" colorScheme="gray" h="8" w="20" p="0" fontSize="12" color="brown" onClick={()=>setCart(product)}>
-                Add to cart
-              </Button>
-            {/* </Link> */}
+           <ItemCount id={product.id}
+           precio={product.precio}
+           img = {product.img}
+           nombre = {product.nombre}
+           stock = {product.stock}
+           />
           </CardFooter>
         </Stack>
       </Card>
