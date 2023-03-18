@@ -6,11 +6,7 @@ import {Box} from '@chakra-ui/react'
 
 function ItemDetailContainer() {
   const [product, setProduct] = useState([]);
-  console.log(product);
   const { id } = useParams();
-
-  console.log(id);
-
   useEffect(() => {
     fetching().then((pr) => setProduct(pr));
   }, []);

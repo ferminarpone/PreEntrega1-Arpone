@@ -4,11 +4,11 @@ import { Button, Flex, Text } from "@chakra-ui/react";
 function ItemCount({stock}) {
  
    const [count, setCount] = useState(1);
-  useEffect(() => console.log("API"),[]);
+  //useEffect(() => console.log("API"),[]);
 
   const add = () =>
     count >= stock ? alert("Stock insuficiente") : setCount(count + 1);
-  const subtract = () => (count <= 0 ? setCount(0) : setCount(count - 1));
+  const subtract = () => (count <= 1 ? setCount(1) : setCount(count - 1));
 
   return (
     <>
