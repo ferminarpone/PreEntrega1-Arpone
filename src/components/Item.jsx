@@ -17,7 +17,7 @@ import {
 function Item({ nombre, precio, id, img }) {
   return (
     <>
-      <GridItem w="100%">
+      <GridItem>
         <Card maxW={{ sm: "80%", md: "100%" }} m="auto" height="100%">
           <CardBody>
             <Image src={img} alt={`MOTO ` + nombre} />

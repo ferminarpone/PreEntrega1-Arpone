@@ -9,6 +9,7 @@ import {
   Divider,
   CardFooter,
   Button,
+  GridItem
 } from "@chakra-ui/react";
 
 import { CarritoContext } from "../context/CartContext";
@@ -58,61 +59,74 @@ const ItemCart = ({ nombre, categoria, precio, id, stock, img, cant }) => {
   const newPrecio = Number(precio.replace(".", ""));
   const totalElemento = newPrecio * counter;
 
-  const removeItem = ()=>{
-       const filtro =  cart.filter((item)=> item.id != id)
-       setCart(filtro) 
-  }
+  const removeItem = () => {
+    const filtro = cart.filter((item) => item.id != id);
+    setCart(filtro);
+  };
 
   return (
-    <Card maxW="sm">
+    <GridItem w="100%">
+    <Card maxW="xs">
       <CardBody>
         <Image
           src={img}
           alt="Green double couch with wooden legs"
           borderRadius="lg"
         />
-        <Stack mt="6" spacing="3">
-          <Heading size="md">{nombre}</Heading>
-
-          <Text color="blue.600" fontSize="2xl">
-            {precio}
+        <Stack>
+          <Heading size="xs">{nombre}</Heading>
+          <Text color="blue.600" fontSize="xs">
+           £ {precio}
           </Text>
         </Stack>
       </CardBody>
       <Divider />
-      <CardFooter display="flex" justifyContent="space-between" alignItems="center">
-        <Box display="flex" flexDirection="column">
-          <Button
-            onClick={add}
-            h="8"
-            w="10"
-            p="0"
-            marginBottom="1"
+      <CardFooter
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <Box display="flex" alignItems="center">
+          <Box display="flex" flexDirection="column">
+            <Button
+              onClick={add}
+              p="0"
+              marginBottom="1"
+              fontSize="12"
+              size="xs"
+            >+</Button>
+            <Button
+              onClick={substract}
+              p="0"
+              fontSize="12"
+              size="xs"
+            >-</Button>
+          </Box>
+
+          <Text
+            pl="2"
+            pr="2"
+            textAlign="center"
+            h="6"
+            border="solid"
+            borderRadius="md"
             fontSize="12"
+            m="1"
           >
-            +
-          </Button>
-          <Button onClick={substract} mr="1" h="8" w="10" p="0" fontSize="12">
-            -
+            {counter}
+          </Text>
+          <Button onClick={upDateCart} mr="1" h="6" p="2" fontSize="12" >
+            {" "}
+            Confirm{" "}
           </Button>
         </Box>
 
-        <Text pt="2" h="8" w="17" pr="1" pl="1" fontSize="12">
-          {counter}
-        </Text>
-        <Button onClick={upDateCart} mr="1" h="8" p="2" fontSize="12">
-          {" "}
-          Confirm{" "}
-        </Button>
-
-        
-
-        <Button onClick={removeItem} mr="1" h="8" p="2" fontSize="12">
+        <Button onClick={removeItem} mr="1" h="6" p="2" fontSize="12" bg="brown" color="aliceblue">
           {" "}
           Remove{" "}
         </Button>
       </CardFooter>
-      <Text>Monto: $ {totalElemento}</Text>
+      <Text h="10">Monto: £ {totalElemento}</Text>
 
       {/*
 <Divider />
@@ -127,6 +141,7 @@ const ItemCart = ({ nombre, categoria, precio, id, stock, img, cant }) => {
 </ButtonGroup>
 </CardFooter> */}
     </Card>
+    </GridItem>
   );
 };
 
