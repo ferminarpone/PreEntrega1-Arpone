@@ -22,7 +22,7 @@ function ItemCount({ stock, nombre, precio, id, img }) {
           }
         });
       }else{
-        return [...cartItems , {id, precio, img, nombre , quantity: count} ] 
+        return [...cartItems , {id, precio, img, nombre , stock, quantity: count} ] 
       }
     })
     
