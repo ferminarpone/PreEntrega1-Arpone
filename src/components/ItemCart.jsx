@@ -9,17 +9,23 @@ import {
   Divider,
   CardFooter,
   Button,
-  GridItem
+  GridItem,
+  transform,
 } from "@chakra-ui/react";
 
 import { CarritoContext } from "../context/CartContext";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 
 const ItemCart = ({ nombre, categoria, precio, id, stock, img, cant }) => {
   const { cart, setCart } = useContext(CarritoContext);
   console.log(cart);
 
   const [counter, setCounter] = useState(cant);
+
+  useEffect(() => {
+    upDateCart();
+  }, [counter]);
+
   const add = () => {
     if (counter >= stock) {
       return alert("Stock insuficiente");
@@ -56,8 +62,10 @@ const ItemCart = ({ nombre, categoria, precio, id, stock, img, cant }) => {
     });
   };
 
-  const newPrecio = Number(precio.replace(".", ""));
-  const totalElemento = newPrecio * counter;
+  const parcialPrice = () => {
+    const newPrecio = Number(precio.replace(".", ""));
+    return newPrecio * counter;
+  };
 
   const removeItem = () => {
     const filtro = cart.filter((item) => item.id != id);
@@ -66,81 +74,66 @@ const ItemCart = ({ nombre, categoria, precio, id, stock, img, cant }) => {
 
   return (
     <GridItem w="100%">
-    <Card maxW="xs">
-      <CardBody>
-        <Image
-          src={img}
-          alt="Green double couch with wooden legs"
-          borderRadius="lg"
-        />
-        <Stack>
-          <Heading size="xs">{nombre}</Heading>
-          <Text color="blue.600" fontSize="xs">
-           £ {precio}
-          </Text>
-        </Stack>
-      </CardBody>
-      <Divider />
-      <CardFooter
-        display="flex"
-        justifyContent="space-between"
-        alignItems="center"
-      >
-        <Box display="flex" alignItems="center">
-          <Box display="flex" flexDirection="column">
+      <Card maxW="xs" m="auto">
+        <CardBody>
+          <Image
+            src={img}
+            alt="Green double couch with wooden legs"
+            borderRadius="lg"
+          />
+          <Stack>
+            <Heading size="xs">{nombre}</Heading>
+            <Text color="blue.600" fontSize="xs">
+            € {precio}
+            </Text>
+          </Stack>
+        </CardBody>
+        <Divider />
+        <CardFooter
+          display="flex"
+          alignItems="center"
+          justifyContent="space-between"
+        >
+          <Box display="flex" alignItems="center">
             <Button
               onClick={add}
               p="0"
-              marginBottom="1"
               fontSize="12"
               size="xs"
-            >+</Button>
+            >
+              +
+            </Button>
+            <Text
+              textAlign="center"
+              w="25px"
+              h="6"
+              fontSize="14px"
+            >
+              {counter}
+            </Text>
+            <Button onClick={substract} p="0" fontSize="12" size="xs">
+              -
+            </Button>
+            </Box>
+
+            <Text pr="2" pl="2" fontWeight="500" bg="gray.100" borderRadius="5px" h="6">€ {parcialPrice()} </Text>
             <Button
-              onClick={substract}
-              p="0"
-              fontSize="12"
-              size="xs"
-            >-</Button>
-          </Box>
-
-          <Text
-            pl="2"
-            pr="2"
-            textAlign="center"
+            onClick={removeItem}
             h="6"
-            border="solid"
-            borderRadius="md"
+            p="2"
             fontSize="12"
-            m="1"
+            _hover={{
+              bg: "brown",
+              color:"aliceblue",
+            }}
+            bg= "brown"
+              color="aliceblue"
           >
-            {counter}
-          </Text>
-          <Button onClick={upDateCart} mr="1" h="6" p="2" fontSize="12" >
             {" "}
-            Confirm{" "}
+            Remove{" "}
           </Button>
-        </Box>
-
-        <Button onClick={removeItem} mr="1" h="6" p="2" fontSize="12" bg="brown" color="aliceblue">
-          {" "}
-          Remove{" "}
-        </Button>
-      </CardFooter>
-      <Text h="10">Monto: £ {totalElemento}</Text>
-
-      {/*
-<Divider />
-<CardFooter>
-<ButtonGroup spacing="2">
-  <Button variant="solid" colorScheme="blue">
-    Buy now
-  </Button>
-  <Button variant="ghost" colorScheme="blue">
-    Add to cart
-  </Button>
-</ButtonGroup>
-</CardFooter> */}
-    </Card>
+        </CardFooter>
+      </Card>
     </GridItem>
   );
 };

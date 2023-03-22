@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { Button, Flex, Text } from "@chakra-ui/react";
 import { CarritoContext } from "../context/CartContext";
+import { Link } from "react-router-dom";
 
 function ItemCount({ stock, nombre, precio, id, img }) {
   const { cart, setCart } = useContext(CarritoContext);
@@ -36,7 +37,7 @@ function ItemCount({ stock, nombre, precio, id, img }) {
         <Button onClick={add} h="8" w="10" p="0" fontSize="12">
           +
         </Button>
-        <Text pt="2" h="8" w="17" pr="1" pl="1" fontSize="12">
+        <Text pt="2" h="8" mr="2" ml="2" textAlign="center" pr="1" pl="1" fontSize="12">
           {count}
         </Text>
         <Button onClick={substract} mr="1" h="8" w="10" p="0" fontSize="12">
@@ -53,7 +54,7 @@ function ItemCount({ stock, nombre, precio, id, img }) {
           Reset
         </Button>
 
-        {/* AGREGAR <Link to={"/cart"}> */}
+        <Link to={"/cart"}> 
         <Button
           variant="solid"
           colorScheme="gray"
@@ -66,7 +67,7 @@ function ItemCount({ stock, nombre, precio, id, img }) {
         >
           Add to cart
         </Button>
-        {/* </Link> */}
+        </Link> 
       </Flex>
     </>
   );

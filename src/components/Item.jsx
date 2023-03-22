@@ -29,20 +29,12 @@ function Item({ nombre, precio, id, img }) {
             </Stack>
           </CardBody>
           <Divider />
-          <CardFooter>
-            <ButtonGroup spacing="2" m="auto">
-              <Link to={`/item/${id}`}>
-                <Button variant="solid" colorScheme="gray" color="brown">
-                  Go to detail
-                </Button>
-              </Link>
-              <Spacer />
-              <Link to="/cart">
-                <Button variant="solid" colorScheme="gray" color="brown">
-                  Add to cart
-                </Button>
-              </Link>
-            </ButtonGroup>
+          <CardFooter m="auto">
+            <Link to={`/item/${id}`}>
+              <Button variant="solid" colorScheme="gray" color="brown">
+                Go to detail
+              </Button>
+            </Link>
           </CardFooter>
         </Card>
       </GridItem>

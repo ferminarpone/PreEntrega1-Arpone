@@ -5,19 +5,13 @@ import { useContext } from "react";
 
 function CartWidget() {
   const { cart, setCart } = useContext(CarritoContext);
-  
-
   const cant = cart.reduce((acc, prod) => acc + prod.quantity,
     0)
-
-
-
-
   return (
     <>
       <div id="carrito">
         <Button className="buttonCart">
-          <span>
+          <span className={cart != 0? "span" : ""}>
             <p>{cant}</p>
           </span>
           <FaMotorcycle className="logoCart" fontSize="30" />

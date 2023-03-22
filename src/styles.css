@@ -35,7 +35,7 @@ position: absolute;
 right: 14px ;
 }
 
-#carrito span{
+#carrito .span{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,3 +51,6 @@ right: 14px ;
   color: aliceblue;
 }
 
+.texto{
+  background:#e9e7e7;
+}
