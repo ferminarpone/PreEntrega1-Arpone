@@ -34,4 +34,4 @@ Haciendo click sobre esta opcion podras visualizar el cataolo completo de motos 
 ### GIF EN EL QUE SE EJEMPLIFICA LA NAVEGABILIDAD DE LA APLICACIÓN
 ---
 
-![Visualizar gif](/src/assets/img/Grabaci%C3%B3n%20de%20pantalla%202023-03-09%20a%20la(s)%2016.26.05.mov)
+![Visualizar gif](./src/assets/Grabaci%C3%B3n_de_pantalla_2023-03-23_a_la_s__20_59_05_AdobeExpress.gif)

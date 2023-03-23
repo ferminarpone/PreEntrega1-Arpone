@@ -8,11 +8,12 @@ const Cart = () => {
   const { cart, setCart } = useContext(CarritoContext);
 
   console.log(cart.length)
+  
   const totalAmount = () => {
     let parcial = cart.map(
       (item) => Number(item.precio.replace(".", "")) * item.quantity
     );
-    return parcial.reduce((acc, prod) => acc + prod, 0);
+    return (parcial.reduce((acc, prod) => acc + prod, 0)).toLocaleString('de-DE');
   };
 
   return (

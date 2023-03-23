@@ -20,6 +20,7 @@ const ItemCart = ({ nombre, categoria, precio, id, stock, img, cant }) => {
   const { cart, setCart } = useContext(CarritoContext);
   console.log(cart);
 
+
   const [counter, setCounter] = useState(cant);
 
   useEffect(() => {
@@ -62,9 +63,11 @@ const ItemCart = ({ nombre, categoria, precio, id, stock, img, cant }) => {
     });
   };
 
+
   const parcialPrice = () => {
     const newPrecio = Number(precio.replace(".", ""));
-    return newPrecio * counter;
+    const total = newPrecio * counter;
+    return total.toLocaleString('de-DE');
   };
 
   const removeItem = () => {
