@@ -1,42 +1,32 @@
-import ItemCount from "./ItemCount";
 import { useState, useEffect } from "react";
-import data from "../data.json";
 import ItemList from "./ItemList";
-import {useParams} from 'react-router-dom';
+import { useParams } from "react-router-dom";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
 
 function ItemListContainer() {
   const [product, setProduct] = useState([]);
-  const {category} = useParams();
+  const { category } = useParams();
+
   useEffect(() => {
-    buscarData();
+    const dBase = getFirestore();
+    const itemsCollection = collection(dBase, "motos");
+
+    getDocs(itemsCollection).then((snapshot) => {
+      setProduct(
+        snapshot.docs.map((item) => ({ id: item.id, ...item.data() }))
+      );
+    });
   }, []);
 
-  const getCards = () => {
-    return new Promise((resolve, reject) => {
-      resolve(data);
-      /* Ya no es necesario el setTimeout
-       setTimeout(() => {
-        resolve(data);
-      }, 2000); */
-    });
-  };
-  const buscarData = async () => {
-    try {
-      const dataFetched = await getCards();
-      setProduct(dataFetched);
-    } catch {
-      console.error("No se encontraron datos");
-    }
-  };
-
-  const filterCat = product.filter((el)=>el.categoria === category)
-
+  const filterCat = product.filter((el) => el.categoria === category);
 
   return (
     <>
-      
-      {category? <ItemList product={filterCat} categoria={category} /> : <ItemList product={product} />}
-      
+      {category ? (
+        <ItemList product={filterCat} categoria={category} />
+      ) : (
+        <ItemList product={product} />
+      )}
     </>
   );
 }

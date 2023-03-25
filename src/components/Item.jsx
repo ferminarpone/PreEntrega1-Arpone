@@ -15,6 +15,7 @@ import {
 } from "@chakra-ui/react";
 
 function Item({ nombre, precio, id, img }) {
+  console.log(id);
   return (
     <>
       <GridItem>

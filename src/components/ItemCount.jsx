@@ -1,14 +1,12 @@
 import { useState, useContext } from "react";
 import { Button, Flex, Text } from "@chakra-ui/react";
 import { CarritoContext } from "../context/CartContext";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function ItemCount({ stock, nombre, precio, id, img }) {
   const { cart, setCart } = useContext(CarritoContext);
-  //console.log(cart)
   const [count, setCount] = useState(1);
-  //useEffect(() => console.log("API"),[]);
-  //const { id } = useParams();
+
 
   const add = () =>
     count >= stock ? alert("Stock insuficiente." ) : setCount(count + 1);

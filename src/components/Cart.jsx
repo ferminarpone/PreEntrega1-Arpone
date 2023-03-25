@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Cart = () => {
   const { cart, setCart } = useContext(CarritoContext);
 
-  console.log(cart.length)
+  console.log(cart)
   
   const totalAmount = () => {
     let parcial = cart.map(

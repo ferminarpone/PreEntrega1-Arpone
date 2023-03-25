@@ -1,36 +1,23 @@
-import data from "../data.json";
 import { useState, useEffect } from "react";
 import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
-import {Box} from '@chakra-ui/react'
+import {Box} from '@chakra-ui/react';
+import {doc, getDoc, getFirestore} from 'firebase/firestore';
 
 function ItemDetailContainer() {
   const [product, setProduct] = useState([]);
   const { id } = useParams();
+  
   useEffect(() => {
-    fetching().then((pr) => setProduct(pr));
+    const dBase = getFirestore();
+    const itemDoc = doc(dBase, "motos", `${id}`);
+    getDoc(itemDoc).then((snapshot)=>{
+      if(snapshot.exists()){
+        const doc = {id: snapshot.id , ...snapshot.data()};
+        setProduct(doc);
+      }
+    })
   }, []);
-
-  const getCards = () => {
-    return new Promise((resolve, reject) => {
-      resolve(data);
-      /*      No es mas necesario el setTimeout
-     setTimeout(() => {
-        resolve(data);
-      }, 2000); */
-    });
-  };
-
-  const fetching = async () => {
-    try {
-      const dataFetched = await getCards();
-      const detail = dataFetched.find((pr) => pr.id == id);
-      return detail;
-      //setProduct(dataFetched);
-    } catch {
-      console.error("No se encontraron datos");
-    }
-  };
 
   return (
     <Box  h="646" display="flex" alignItems="center">
