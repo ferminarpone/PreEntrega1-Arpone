@@ -7,16 +7,23 @@ function ItemCount({ stock, nombre, precio, id, img }) {
   const { cart, setCart } = useContext(CarritoContext);
   const [count, setCount] = useState(1);
 
+  const find = cart.find((el) => el.id == id);
+  const newStock = () => {
+    if (find) {
+      return stock - find.quantity;
+    }
+    return stock;
+  };
 
   const add = () =>
-    count >= stock ? alert("Stock insuficiente." ) : setCount(count + 1);
+    count >= newStock() ? alert("Stock insuficiente.") : setCount(count + 1);
   const substract = () => (count <= 1 ? setCount(1) : setCount(count - 1));
   const addToCart = () => {
     setCart((cartItems) => {
       console.log(cartItems);
       const itemFound = cartItems.find((item) => item.id === id);
       if (itemFound) {
-        if (   count <= itemFound.stock - itemFound.quantity ) {
+        if (count <= itemFound.stock - itemFound.quantity) {
           return cartItems.map((item) => {
             if (item.id === id) {
               return { ...item, quantity: item.quantity + count };
@@ -25,8 +32,7 @@ function ItemCount({ stock, nombre, precio, id, img }) {
             }
           });
         } else {
-          alert(`Stock insuficiente. 
-Stock disponible: ${itemFound.stock - itemFound.quantity}.`);
+          alert("Stock insuficiente.");
           return cartItems;
         }
       } else {
@@ -38,18 +44,18 @@ Stock disponible: ${itemFound.stock - itemFound.quantity}.`);
     });
   };
 
-   const navigation = () => {
-     const found = cart.find((item) => item.id == id);
-     if (found) {
-       if (count <= found.stock - found.quantity) {
-         return "/cart";
-       } else {
-         return `/item/${id}`;
-       }
-     }else{
+  const navigation = () => {
+    const found = cart.find((item) => item.id == id);
+    if (found) {
+      if (count <= found.stock - found.quantity) {
+        return "/cart";
+      } else {
+        return `/item/${id}`;
+      }
+    } else {
       return "/cart";
-  }
-   };
+    }
+  };
 
   return (
     <>
