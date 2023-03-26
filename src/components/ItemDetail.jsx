@@ -1,4 +1,4 @@
-import ItemCount from './ItemCount';
+import ItemCount from "./ItemCount";
 import {
   Card,
   Stack,
@@ -10,9 +10,7 @@ import {
   Container,
 } from "@chakra-ui/react";
 
-
 function ItemDetail({ product }) {
-
   return (
     <Container maxW="5xl">
       <Card
@@ -21,7 +19,7 @@ function ItemDetail({ product }) {
         variant="outline"
         width="100%"
         height="100%"
-        border="none" 
+        border="none"
       >
         <Image
           objectFit="cover"
@@ -36,12 +34,13 @@ function ItemDetail({ product }) {
             <Text py="2">{product.descripcion}</Text>
           </CardBody>
           <CardFooter display="flex" justifyContent="space-between">
-           <ItemCount id={product.id}
-           precio={product.precio}
-           img = {product.img}
-           nombre = {product.nombre}
-           stock = {product.stock}
-           />
+            <ItemCount
+              id={product.id}
+              precio={product.precio}
+              img={product.img}
+              nombre={product.nombre}
+              stock={product.stock}
+            />
           </CardFooter>
         </Stack>
       </Card>

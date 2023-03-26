@@ -2,7 +2,6 @@ import Item from "./Item";
 import { Box, Heading, Grid, Container } from "@chakra-ui/react";
 
 function ItemList({ product, categoria }) {
-  
   return (
     <>
       <Box bg="rgb(37, 39, 39)" pb="10">
@@ -18,8 +17,14 @@ function ItemList({ product, categoria }) {
           </Heading>
         </Box>
         <Container maxW="6xl">
-          <Heading color="white" fontSize="2xl" pl={{base:"12", md:"10"}} pt="10">
-            {categoria? categoria : "CATALOGO COMPLETO"}</Heading>
+          <Heading
+            color="white"
+            fontSize="2xl"
+            pl={{ base: "12", md: "10" }}
+            pt="10"
+          >
+            {categoria ? categoria : "CATALOGO COMPLETO"}
+          </Heading>
           <Grid
             templateColumns={{
               sm: "repeat(1, 1fr)",
@@ -27,7 +32,9 @@ function ItemList({ product, categoria }) {
               lg: "repeat(3, 1fr)",
             }}
             gap="6"
-            pl={{base:"0",md:"10"}} pt="5" pr={{base:"0",md:"10"}}
+            pl={{ base: "0", md: "10" }}
+            pt="5"
+            pr={{ base: "0", md: "10" }}
           >
             {product.map((pr) => {
               return (

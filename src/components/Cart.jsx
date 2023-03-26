@@ -1,20 +1,12 @@
 import { Box, Heading, Grid, Container, Text, Button } from "@chakra-ui/react";
 import ItemCart from "./ItemCart";
+import CreateOrder from "./CreateOrder";
 import { CarritoContext } from "../context/CartContext";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const { cart, setCart } = useContext(CarritoContext);
-
-  console.log(cart)
-  
-  const totalAmount = () => {
-    let parcial = cart.map(
-      (item) => Number(item.precio.replace(".", "")) * item.quantity
-    );
-    return (parcial.reduce((acc, prod) => acc + prod, 0)).toLocaleString('de-DE');
-  };
+  const { cart, totalAmount } = useContext(CarritoContext);
 
   return (
     <Box bg="rgb(37, 39, 39)" pb="10" h={cart == 0 ? "650px" : "auto"}>
@@ -31,8 +23,14 @@ const Cart = () => {
       </Box>
       <Container maxW="6xl">
         <Grid
-          templateColumns={ cart.length ==1? {sm: "repeat(1, 1fr)"}:
-            { sm: "repeat(1, 1fr)", md: "repeat(2, 1fr)", lg: "repeat(3, 1fr)"}
+          templateColumns={
+            cart.length == 1
+              ? { sm: "repeat(1, 1fr)" }
+              : {
+                  sm: "repeat(1, 1fr)",
+                  md: "repeat(2, 1fr)",
+                  lg: "repeat(3, 1fr)",
+                }
           }
           gap="6"
           pl={{ base: "0", md: "10" }}
@@ -54,29 +52,33 @@ const Cart = () => {
             );
           })}
         </Grid>
+
         {cart != 0 ? (
-          <Box
-            mt="10"
-            bg="white"
-            ml={{ base: "0", md: "10" }}
-            mr={{ base: "0", md: "10" }}
-            p="2"
-            borderRadius="5"
-            display="flex"
-            justifyContent="center"
-          >
-            <Text
-              pr="2"
-              pl="2"
-              fontWeight="500"
-              bg="gray.200"
-              borderRadius="5px"
-              h="6"
+          <>
+            <CreateOrder />
+            <Box
+              mt="10"
+              bg="white"
+              ml={{ base: "0", md: "10" }}
+              mr={{ base: "0", md: "10" }}
+              p="2"
+              borderRadius="5"
+              display="flex"
+              justifyContent="center"
             >
-              {" "}
-              Total: € {totalAmount()}{" "}
-            </Text>
-          </Box>
+              <Text
+                pr="2"
+                pl="2"
+                fontWeight="500"
+                bg="gray.200"
+                borderRadius="5px"
+                h="6"
+              >
+                {" "}
+                Total: € {totalAmount()}{" "}
+              </Text>
+            </Box>
+          </>
         ) : (
           <Box display="flex" flexDirection="column" alignItems="center">
             <Text

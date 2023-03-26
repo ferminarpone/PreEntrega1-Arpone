@@ -20,7 +20,6 @@ function ItemCount({ stock, nombre, precio, id, img }) {
   const substract = () => (count <= 1 ? setCount(1) : setCount(count - 1));
   const addToCart = () => {
     setCart((cartItems) => {
-      console.log(cartItems);
       const itemFound = cartItems.find((item) => item.id === id);
       if (itemFound) {
         if (count <= itemFound.stock - itemFound.quantity) {

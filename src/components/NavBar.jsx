@@ -18,7 +18,7 @@ function NavBar() {
     <>
       <Flex id="navBar">
         <Link to={"/"}>
-        <Image ml="5" height="30px" w="150" src={icono} alt="Logo Triumph" />
+          <Image ml="5" height="30px" w="150" src={icono} alt="Logo Triumph" />
         </Link>
         <Spacer />
         <Menu>
@@ -31,55 +31,55 @@ function NavBar() {
           </MenuButton>
           <MenuList>
             <Link to={"/catalogue"}>
-            <MenuItem
-              color="rgb(37, 39, 39)"
-              _hover={{
-                color: "brown",
-              }}
-              fontWeight="bold"
-              fontSize="14"
-            >
-              CATALOGO COMPLETO
-            </MenuItem>
+              <MenuItem
+                color="rgb(37, 39, 39)"
+                _hover={{
+                  color: "brown",
+                }}
+                fontWeight="bold"
+                fontSize="14"
+              >
+                CATALOGO COMPLETO
+              </MenuItem>
             </Link>
             <Link to={`/category/${"ROADSTERS"}`}>
-            <MenuItem
-              color="rgb(37, 39, 39)"
-              _hover={{
-                color: "brown",
-              }}
-              fontWeight="bold"
-              fontSize="14"
-              pl="4"
-            >
-              - ROADSTERS
-            </MenuItem>
+              <MenuItem
+                color="rgb(37, 39, 39)"
+                _hover={{
+                  color: "brown",
+                }}
+                fontWeight="bold"
+                fontSize="14"
+                pl="4"
+              >
+                - ROADSTERS
+              </MenuItem>
             </Link>
             <Link to={`/category/${"ADVENTURE"}`}>
-            <MenuItem
-              color="rgb(37, 39, 39)"
-              _hover={{
-                color: "brown",
-              }}
-              fontWeight="bold"
-              fontSize="14"
-              pl="4"
-            >
-              - ADVENTURE
-            </MenuItem>
+              <MenuItem
+                color="rgb(37, 39, 39)"
+                _hover={{
+                  color: "brown",
+                }}
+                fontWeight="bold"
+                fontSize="14"
+                pl="4"
+              >
+                - ADVENTURE
+              </MenuItem>
             </Link>
             <Link to={`/category/${"MODERN CLASSICS"}`}>
-            <MenuItem
-              color="rgb(37, 39, 39)"
-              _hover={{
-                color: "brown",
-              }}
-              fontWeight="bold"
-              fontSize="14"
-              pl="4"
-            >
-              - MODERN CLASSICS
-            </MenuItem>
+              <MenuItem
+                color="rgb(37, 39, 39)"
+                _hover={{
+                  color: "brown",
+                }}
+                fontWeight="bold"
+                fontSize="14"
+                pl="4"
+              >
+                - MODERN CLASSICS
+              </MenuItem>
             </Link>
           </MenuList>
         </Menu>

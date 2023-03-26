@@ -10,19 +10,15 @@ import {
   CardFooter,
   Button,
   GridItem,
-  transform,
 } from "@chakra-ui/react";
 
 import { CarritoContext } from "../context/CartContext";
 import { useContext, useState, useEffect } from "react";
 
-const ItemCart = ({ nombre, categoria, precio, id, stock, img, cant }) => {
+const ItemCart = ({ nombre, precio, id, stock, img, cant }) => {
   const { cart, setCart } = useContext(CarritoContext);
-  console.log(cart);
-
 
   const [counter, setCounter] = useState(cant);
-
   useEffect(() => {
     upDateCart();
   }, [counter]);
@@ -63,11 +59,10 @@ const ItemCart = ({ nombre, categoria, precio, id, stock, img, cant }) => {
     });
   };
 
-
   const parcialPrice = () => {
     const newPrecio = Number(precio.replace(".", ""));
     const total = newPrecio * counter;
-    return total.toLocaleString('de-DE');
+    return total.toLocaleString("de-DE");
   };
 
   const removeItem = () => {
@@ -87,7 +82,7 @@ const ItemCart = ({ nombre, categoria, precio, id, stock, img, cant }) => {
           <Stack>
             <Heading size="xs">{nombre}</Heading>
             <Text color="blue.600" fontSize="xs">
-            € {precio}
+              € {precio}
             </Text>
           </Stack>
         </CardBody>
@@ -98,39 +93,38 @@ const ItemCart = ({ nombre, categoria, precio, id, stock, img, cant }) => {
           justifyContent="space-between"
         >
           <Box display="flex" alignItems="center">
-            <Button
-              onClick={add}
-              p="0"
-              fontSize="12"
-              size="xs"
-            >
+            <Button onClick={add} p="0" fontSize="12" size="xs">
               +
             </Button>
-            <Text
-              textAlign="center"
-              w="25px"
-              h="6"
-              fontSize="14px"
-            >
+            <Text textAlign="center" w="25px" h="6" fontSize="14px">
               {counter}
             </Text>
             <Button onClick={substract} p="0" fontSize="12" size="xs">
               -
             </Button>
-            </Box>
+          </Box>
 
-            <Text pr="2" pl="2" fontWeight="500" bg="gray.100" borderRadius="5px" h="6">€ {parcialPrice()} </Text>
-            <Button
+          <Text
+            pr="2"
+            pl="2"
+            fontWeight="500"
+            bg="gray.100"
+            borderRadius="5px"
+            h="6"
+          >
+            € {parcialPrice()}{" "}
+          </Text>
+          <Button
             onClick={removeItem}
             h="6"
             p="2"
             fontSize="12"
             _hover={{
               bg: "brown",
-              color:"aliceblue",
+              color: "aliceblue",
             }}
-            bg= "brown"
-              color="aliceblue"
+            bg="brown"
+            color="aliceblue"
           >
             {" "}
             Remove{" "}
