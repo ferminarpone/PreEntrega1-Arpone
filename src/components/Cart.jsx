@@ -1,4 +1,16 @@
-import { Box, Heading, Grid, Container, Text, Button } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  Grid,
+  Container,
+  Text,
+  Button,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+  CloseButton,
+} from "@chakra-ui/react";
 import ItemCart from "./ItemCart";
 import CreateOrder from "./CreateOrder";
 import { CarritoContext } from "../context/CartContext";
@@ -6,7 +18,13 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const { cart, totalAmount } = useContext(CarritoContext);
+  const { cart, setCart, totalAmount, orderId, setOrderId } =
+    useContext(CarritoContext);
+
+  const removeCart = () => {
+    setCart([]);
+    setOrderId(null);
+  };
 
   return (
     <Box bg="rgb(37, 39, 39)" pb="10" h={cart == 0 ? "650px" : "auto"}>
@@ -22,6 +40,37 @@ const Cart = () => {
         </Heading>
       </Box>
       <Container maxW="6xl">
+        <Box position="relative">
+          {orderId != null ? (
+            <Alert
+              status="success"
+              position="absolute"
+              top="150px"
+              zIndex="100"
+              display="flex"
+              justifyContent="center"
+              ml={{ base: "0", md: "10" }}
+              
+              
+            >
+              <AlertIcon />
+
+              <Box>
+                <AlertTitle>Success!</AlertTitle>
+                <AlertDescription>Nro. de orden: {orderId}</AlertDescription>
+              </Box>
+              <CloseButton
+                alignSelf="flex-start"
+                position="relative"
+                right={-1}
+                top={-1}
+                onClick={removeCart}
+              />
+            </Alert>
+          ) : (
+            ""
+          )}
+        </Box>
         <Grid
           templateColumns={
             cart.length == 1
@@ -55,7 +104,6 @@ const Cart = () => {
 
         {cart != 0 ? (
           <>
-            <CreateOrder />
             <Box
               mt="10"
               bg="white"
@@ -78,6 +126,7 @@ const Cart = () => {
                 Total: € {totalAmount()}{" "}
               </Text>
             </Box>
+            <CreateOrder />
           </>
         ) : (
           <Box display="flex" flexDirection="column" alignItems="center">

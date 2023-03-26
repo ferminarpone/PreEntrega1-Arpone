@@ -93,13 +93,13 @@ const ItemCart = ({ nombre, precio, id, stock, img, cant }) => {
           justifyContent="space-between"
         >
           <Box display="flex" alignItems="center">
-            <Button onClick={add} p="0" fontSize="12" size="xs">
+            <Button onClick={add} p="0" fontSize="12" size="xs" cursor={ counter >= stock? "not-allowed":"default"}>
               +
             </Button>
             <Text textAlign="center" w="25px" h="6" fontSize="14px">
               {counter}
             </Text>
-            <Button onClick={substract} p="0" fontSize="12" size="xs">
+            <Button onClick={substract} p="0" fontSize="12" size="xs" cursor={counter <= 1 ? "not-allowed":"default"}>
               -
             </Button>
           </Box>

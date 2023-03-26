@@ -4,6 +4,7 @@ export const CarritoContext = createContext(null);
 
 const CartContext = ({ children }) => {
   const [cart, setCart] = useState([]);
+  const [orderId, setOrderId] = useState(null);
 
   const totalAmount = () => {
     let parcial = cart.map(
@@ -12,8 +13,9 @@ const CartContext = ({ children }) => {
     return parcial.reduce((acc, prod) => acc + prod, 0).toLocaleString("de-DE");
   };
 
+   
   return (
-    <CarritoContext.Provider value={{ cart, setCart, totalAmount }}>
+    <CarritoContext.Provider value={{ cart, setCart, totalAmount, orderId, setOrderId}}>
       {children}
     </CarritoContext.Provider>
   );

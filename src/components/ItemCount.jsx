@@ -4,19 +4,18 @@ import { CarritoContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
 
 function ItemCount({ stock, nombre, precio, id, img }) {
-  const { cart, setCart } = useContext(CarritoContext);
+  const { cart, setCart} = useContext(CarritoContext);
   const [count, setCount] = useState(1);
 
-  const find = cart.find((el) => el.id == id);
   const newStock = () => {
+    const find = cart.find((el) => el.id == id);
     if (find) {
       return stock - find.quantity;
     }
     return stock;
   };
 
-  const add = () =>
-    count >= newStock() ? alert("Stock insuficiente.") : setCount(count + 1);
+  const add = () => count >= newStock(stock, id) ? alert("Stock insuficiente.") : setCount(count + 1);
   const substract = () => (count <= 1 ? setCount(1) : setCount(count - 1));
   const addToCart = () => {
     setCart((cartItems) => {
@@ -59,7 +58,7 @@ function ItemCount({ stock, nombre, precio, id, img }) {
   return (
     <>
       <Flex mb="5" justifyContent="center">
-        <Button onClick={add} h="8" w="10" p="0" fontSize="12">
+        <Button onClick={add} h="8" w="10" p="0" fontSize="12" cursor={ count >= newStock()? "not-allowed":"default"}>
           +
         </Button>
         <Text
@@ -74,7 +73,7 @@ function ItemCount({ stock, nombre, precio, id, img }) {
         >
           {count}
         </Text>
-        <Button onClick={substract} mr="1" h="8" w="10" p="0" fontSize="12">
+        <Button onClick={substract} mr="1" h="8" w="10" p="0" fontSize="12" cursor={count <= 1 ? "not-allowed":"default"}>
           -
         </Button>
         <Button
