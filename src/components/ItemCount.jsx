@@ -3,10 +3,15 @@ import { Button, Flex, Text, Tooltip } from "@chakra-ui/react";
 import { CarritoContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
 
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
 function ItemCount({ stock, nombre, precio, id, img }) {
   const { cart, setCart } = useContext(CarritoContext);
   const [count, setCount] = useState(1);
+  const MySwal = withReactContent(Swal);
 
+  //Función para administrar el stock.
   const newStock = () => {
     const find = cart.find((el) => el.id == id);
     if (find) {
@@ -15,8 +20,11 @@ function ItemCount({ stock, nombre, precio, id, img }) {
     return stock;
   };
 
-  const add = () => count >= newStock(stock, id)? "":setCount(count + 1);
+  //Funciones para agregar y quitar elementos de un producto.
+  const add = () => (count >= newStock(stock, id) ? "" : setCount(count + 1));
   const substract = () => (count <= 1 ? setCount(1) : setCount(count - 1));
+
+  //Función para agregar productos al carrito.
   const addToCart = () => {
     setCart((cartItems) => {
       const itemFound = cartItems.find((item) => item.id === id);
@@ -30,7 +38,23 @@ function ItemCount({ stock, nombre, precio, id, img }) {
             }
           });
         } else {
-          alert("Stock insuficiente.");
+          MySwal.fire({
+            width: 500,
+            height:200,
+            padding: "1em",
+            icon: "error",
+            title: "Oops...",
+            html: `<p>No es posible agregar mas <sapn style="font-weight: bold">${nombre}</span></p></br>
+             <p style="font-weight: bold">Stock total: ${stock}</p>`,
+            showConfirmButton: false,
+            showCloseButton: true,
+            customClass: {
+              icon: 'iconClass',
+              title:'titleClass',
+              popup: 'containerClass',
+            }
+          });
+
           return cartItems;
         }
       } else {
@@ -42,6 +66,7 @@ function ItemCount({ stock, nombre, precio, id, img }) {
     });
   };
 
+  //Función para ir al carrito o mantenerse en Itemdetail.
   const navigation = () => {
     const found = cart.find((item) => item.id == id);
     if (found) {
@@ -58,26 +83,28 @@ function ItemCount({ stock, nombre, precio, id, img }) {
   return (
     <>
       <Flex mb="5" justifyContent="center">
-        {count>= newStock()?(
-        <Tooltip label="Stock insuficiente" placement="bottom" bg='gray.100' color='black'>
-          <Button
-            onClick={add}
-            h="8"
-            size="xs" 
-            fontSize="12"
-            cursor={count >= newStock() ? "not-allowed" : "default"}
+        {count >= newStock() ? (
+          <Tooltip
+            label="Stock insuficiente"
+            placement="bottom"
+            bg="gray.100"
+            color="black"
           >
+            <Button
+              onClick={add}
+              h="8"
+              size="xs"
+              fontSize="12"
+              cursor={count >= newStock() ? "not-allowed" : "default"}
+            >
+              +
+            </Button>
+          </Tooltip>
+        ) : (
+          <Button onClick={add} h="8" size="xs" fontSize="12">
             +
           </Button>
-        </Tooltip>):
-        <Button
-            onClick={add}
-            h="8"
-            size="xs"
-            fontSize="12"
-          >
-            +
-          </Button> }
+        )}
         <Text
           pt="2"
           h="8"

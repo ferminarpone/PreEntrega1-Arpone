@@ -69,3 +69,18 @@ right: 14px ;
   border-radius:5px;
   height:6;
 }
+
+.containerClass{
+  height: 225px !important;
+}
+
+.titleClass{
+padding: 0px;
+}
+
+.iconClass{
+ font-size: 10px;
+ margin-top: 2px;
+ margin-bottom: 2px;
+}
+

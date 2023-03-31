@@ -1,11 +1,4 @@
-import {
-  Box,
-  Heading,
-  Grid,
-  Container,
-  Text,
-  Button,
-} from "@chakra-ui/react";
+import { Box, Heading, Grid, Container, Text, Button } from "@chakra-ui/react";
 import ItemCart from "./ItemCart";
 import CreateOrder from "./CreateOrder";
 import { CarritoContext } from "../context/CartContext";
@@ -15,19 +8,19 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
 const Cart = () => {
-  const { cart, setCart, totalAmount, orderId, setOrderId } =
-    useContext(CarritoContext);
-
-    useEffect(() => {
-      window.scroll(0,0);   
-    }, [])
-    
+  const { cart, setCart, totalAmount, orderId, setOrderId } = useContext(CarritoContext);
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
   const MySwal = withReactContent(Swal);
-  {orderId != null
+
+  //Condicional que muestra el "orderId" cuando se realiza la compra.
+  {
+    orderId != null
       ? MySwal.fire({
           icon: "success",
-          title: 'Successful Purchase',
-          html: `<p class=alertTitle>Order number: ${orderId}<p>`,
+          title: "Compra exitosa!",
+          html: `<p class=alertTitle>Nro. de orden: ${orderId}<p>`,
           confirmButtonText: "OK",
         }).then(() => {
           setCart([]);
@@ -105,7 +98,7 @@ const Cart = () => {
                 Total: € {totalAmount()}{" "}
               </Text>
             </Box>
-            <CreateOrder/>
+            <CreateOrder />
           </>
         ) : (
           <Box display="flex" flexDirection="column" alignItems="center">

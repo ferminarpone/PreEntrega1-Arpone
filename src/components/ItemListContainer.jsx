@@ -6,9 +6,7 @@ import { collection, getDocs, getFirestore } from "firebase/firestore";
 function ItemListContainer() {
   const [product, setProduct] = useState([]);
   const { category } = useParams();
-
-
-  
+  //Llamado a la DB.
   useEffect(() => { 
     const dBase = getFirestore();
     const itemsCollection = collection(dBase, "motos");
@@ -19,6 +17,7 @@ function ItemListContainer() {
     })  
   }, []);
 
+  //Filtro por categorias.
   const filterCart = product.filter((el) => el.categoria === category);
 
   return (

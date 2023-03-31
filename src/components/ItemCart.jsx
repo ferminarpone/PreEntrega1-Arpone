@@ -12,24 +12,23 @@ import {
   GridItem,
   Tooltip,
 } from "@chakra-ui/react";
-
 import { CarritoContext } from "../context/CartContext";
 import { useContext, useState, useEffect } from "react";
 
 const ItemCart = ({ nombre, precio, id, stock, img, cant }) => {
-  const { cart, setCart } = useContext(CarritoContext);
 
+  const { cart, setCart } = useContext(CarritoContext);
   const [counter, setCounter] = useState(cant);
   useEffect(() => {
     upDateCart();
   }, [counter]);
 
+  //Funciones para agregar y quitar cantidad de productos.
   const add = () => {
     if (counter < stock) {
       return setCounter(counter + 1);
     }
   };
-
   const substract = () => {
     if (counter <= 1) {
       setCounter(1);
@@ -38,6 +37,7 @@ const ItemCart = ({ nombre, precio, id, stock, img, cant }) => {
     }
   };
 
+  //Función que actualiza el carrito.
   const upDateCart = () => {
     setCart((cartItems) => {
       const itemFound = cartItems.find((item) => item.id === id);
@@ -58,12 +58,14 @@ const ItemCart = ({ nombre, precio, id, stock, img, cant }) => {
     });
   };
 
+//Función que actualiza el precio parcial por conjunto de producto.
   const parcialPrice = () => {
     const newPrecio = Number(precio.replace(".", ""));
     const total = newPrecio * counter;
     return total.toLocaleString("de-DE");
   };
 
+  //Función que elimina un producto del carrito.
   const removeItem = () => {
     const filtro = cart.filter((item) => item.id != id);
     setCart(filtro);
