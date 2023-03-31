@@ -16,18 +16,17 @@ Gracias a esta aplicación podras navegar, visualizar y comprar todas las opcion
 ### NAVEGABILIDAD
 ---
 * Haciendo click con el mousse sobre "brand" es decir la marca **Triumph** podras situarte sobre la pagina de inicio. 
-* Clickeando sobre el boton de menu **MOTOS** podras acceder a un desplegable, en donde tendras la posibilidar de acceder a 4 sitios:    
+* Clickeando sobre el botón de menu **MOTOS** podras acceder a un desplegable, en donde tendras la posibilidar de acceder a 4 sitios:    
     * **CATALOGO COMPLETO:**
-    Haciendo click sobre esta opcion podras visualizar el catalogo completo de motos.
+    Haciendo click sobre esta opción podras visualizar el catalogo completo de motos.
     * **ROADSTERS:**
-Haciendo click sobre esta opcion podras visualizar el cataolo completo de motos de la sección Roadsters.
+Haciendo click sobre esta opción podras visualizar el catalogo completo de motos de la sección Roadsters.
     * **ADVENTURE:**
-Haciendo click sobre esta opcion podras visualizar el cataolo completo de motos de la sección Adventure.
+Haciendo click sobre esta opción podras visualizar el catalogo completo de motos de la sección Adventure.
     * **MODERN CLASSICS:**
-Haciendo click sobre esta opcion podras visualizar el cataolo completo de motos de la sección Modern Classics.
-* Una vez que te encuentres visualizando los productos de la categoria seleccionada, podras acceder al detalle particular de la moto que más te guste, haciendo click en :
-    * **Ver detalles**
-* Si has optado por visualizar los detalles de la moto que mas te gusta, tendras la posibilidad de acceder a mayor informacion de la misma, como tambien te encontraras con botones para aumentar o disminuir la cantidad de items del mismo producto que desea comprar. Y por ultimo, una vez seleccionada la cantidad podras dirigirte al carrito de compras, clickeando sobre **Agregar a carrito**.
+Haciendo click sobre esta opción podras visualizar el catalogo completo de motos de la sección Modern Classics.
+* Una vez que te encuentres visualizando los productos de la categoria seleccionada, podras acceder al detalle particular de la moto que más te guste, haciendo click en el botón **Ver detalles**.
+* Si has optado por visualizar los detalles de la moto que mas te gusta, tendras la posibilidad de acceder a mayor informacion de la misma, como tambien te encontraras con botones para aumentar o disminuir la cantidad de items del mismo producto que desea comprar. Y por ultimo, una vez seleccionada la cantidad podras agregar la moto y dirigirte al carrito de compras, clickeando sobre el botón **Agregar a carrito**.
 * Por ultimo, pero no menos importante, el "NavBar" de la aplicación cuenta con un icono sobre la derecha del usuario, la cual te permite dirigirte hacia el carrito de compras.
 ### DEPENDENCIAS UTILIZADAS
 * **Vite**: Utilizado para iniciar el proyecto. 
