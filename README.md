@@ -28,7 +28,9 @@ Haciendo click sobre esta opción podras visualizar el catalogo completo de moto
 * Una vez que te encuentres visualizando los productos de la categoria seleccionada, podras acceder al detalle particular de la moto que más te guste, haciendo click en el botón **Ver detalles**.
 * Si has optado por visualizar los detalles de la moto que mas te gusta, tendras la posibilidad de acceder a más información de la misma, como tambien te encontrarás con botones para aumentar o disminuir la cantidad de items del mismo producto que desea comprar. Y por ultimo, una vez seleccionada la cantidad podras agregar la moto y dirigirte al carrito de compras, clickeando sobre el botón **Agregar a carrito**.
 * Por último, pero no menos importante, el "NavBar" de la aplicación cuenta con un icono sobre la derecha del usuario, la cual te permite dirigirte hacia el carrito de compras.
+
 ### DEPENDENCIAS UTILIZADAS
+---
 * **Vite**: Utilizado para iniciar el proyecto. 
 * **Chakra-ui**: Utilizado para dar ciertos estilos. **- Versión: "^2.5.0"**
 * **React-router-dom**: Utilizado para darle navegabilidad a la aplicación. **- Versión: "^6.8.2"**
