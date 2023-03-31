@@ -43,8 +43,8 @@ function ItemCount({ stock, nombre, precio, id, img }) {
             padding: "1em",
             icon: "error",
             title: "Oops...",
-            html: `<p>No es posible agregar mas <sapn style="font-weight: bold">${nombre}</span></p></br>
-             <p style="font-weight: bold">Stock total: ${stock}</p>`,
+            html: `<p>No es posible agregar otra unidad de <sapn style="font-weight: bold">${nombre}</span></p></br>
+             <p style="font-weight: bold">Stock disponible total: ${stock}</p>`,
             showConfirmButton: false,
             showCloseButton: true,
             customClass: {
