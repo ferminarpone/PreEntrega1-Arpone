@@ -23,7 +23,7 @@ Gracias a esta aplicación podras navegar, visualizar y comprar todas las opcion
 Haciendo click sobre esta opcion podras visualizar el cataolo completo de motos de la sección Roadsters.
     * **ADVENTURE:**
 Haciendo click sobre esta opcion podras visualizar el cataolo completo de motos de la sección Adventure.
-   
+    * **MODERN CLASSICS:**
 Haciendo click sobre esta opcion podras visualizar el cataolo completo de motos de la sección Modern Classics.
 * Una vez que te encuentres visualizando los productos de la categoria seleccionada, podras acceder al detalle particular de la moto que más te guste, haciendo click en :
     * **Ver detalles**
