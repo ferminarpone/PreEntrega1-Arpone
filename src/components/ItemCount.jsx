@@ -40,7 +40,6 @@ function ItemCount({ stock, nombre, precio, id, img }) {
         } else {
           MySwal.fire({
             width: 500,
-            height:200,
             padding: "1em",
             icon: "error",
             title: "Oops...",

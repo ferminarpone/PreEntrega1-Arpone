@@ -6,6 +6,7 @@ import {
   Container,
   CircularProgress,
 } from "@chakra-ui/react";
+import React from 'react'
 
 function ItemList({ product, categoria }) {
   return (
@@ -76,4 +77,4 @@ function ItemList({ product, categoria }) {
   );
 }
 
-export default ItemList;
+export default React.memo(ItemList);
