@@ -5,26 +5,36 @@ import {
   Container,
   Text,
   Button,
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  AlertDescription,
-  CloseButton,
 } from "@chakra-ui/react";
 import ItemCart from "./ItemCart";
 import CreateOrder from "./CreateOrder";
 import { CarritoContext } from "../context/CartContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 const Cart = () => {
   const { cart, setCart, totalAmount, orderId, setOrderId } =
     useContext(CarritoContext);
 
-  const removeCart = () => {
-    setCart([]);
-    setOrderId(null);
-  };
+    useEffect(() => {
+      window.scroll(0,0);   
+    }, [])
+    
+  const MySwal = withReactContent(Swal);
+  {orderId != null
+      ? MySwal.fire({
+          icon: "success",
+          title: 'Successful Purchase',
+          html: `<p class=alertTitle>Order number: ${orderId}<p>`,
+          confirmButtonText: "OK",
+        }).then(() => {
+          setCart([]);
+          setOrderId(null);
+        })
+      : "";
+  }
 
   return (
     <Box bg="rgb(37, 39, 39)" pb="10" h={cart == 0 ? "650px" : "auto"}>
@@ -36,41 +46,10 @@ const Cart = () => {
         h={{ base: "200" }}
       >
         <Heading textAlign="center" color="aliceblue" pt="7%" mb="10">
-          SHOPPING CART
+          CARRITO DE COMPRA
         </Heading>
       </Box>
       <Container maxW="6xl">
-        <Box position="relative">
-          {orderId != null ? (
-            <Alert
-              status="success"
-              position="absolute"
-              top="150px"
-              zIndex="100"
-              display="flex"
-              justifyContent="center"
-              ml={{ base: "0", md: "10" }}
-              
-              
-            >
-              <AlertIcon />
-
-              <Box>
-                <AlertTitle>Success!</AlertTitle>
-                <AlertDescription>Nro. de orden: {orderId}</AlertDescription>
-              </Box>
-              <CloseButton
-                alignSelf="flex-start"
-                position="relative"
-                right={-1}
-                top={-1}
-                onClick={removeCart}
-              />
-            </Alert>
-          ) : (
-            ""
-          )}
-        </Box>
         <Grid
           templateColumns={
             cart.length == 1
@@ -126,7 +105,7 @@ const Cart = () => {
                 Total: € {totalAmount()}{" "}
               </Text>
             </Box>
-            <CreateOrder />
+            <CreateOrder/>
           </>
         ) : (
           <Box display="flex" flexDirection="column" alignItems="center">
@@ -141,12 +120,12 @@ const Cart = () => {
               alignItems="center"
               justifyContent="center"
             >
-              YOUR SHOPPING CART IS EMPTY
+              TU CARRITO SE ENCUENTRA VACIO
             </Text>
             <Link to={"/catalogue"}>
               <Button bg="gray.200" mt="5" w="150px" color="brown">
                 {" "}
-                Go to catalogue{" "}
+                Ir al catalogo{" "}
               </Button>
             </Link>
           </Box>
@@ -155,5 +134,4 @@ const Cart = () => {
     </Box>
   );
 };
-
 export default Cart;

@@ -59,3 +59,13 @@ right: 14px ;
   background-color: aliceblue;
   margin-top: 20px;
 }
+
+.alertTitle{
+  width: auto;
+  margin: 0px 25px 0px 25px ;
+  padding: 4px;
+  font-weight: 500;
+  background-color: rgb(235, 235, 235);
+  border-radius:5px;
+  height:6;
+}

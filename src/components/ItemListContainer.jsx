@@ -7,23 +7,24 @@ function ItemListContainer() {
   const [product, setProduct] = useState([]);
   const { category } = useParams();
 
-  useEffect(() => {
+
+  
+  useEffect(() => { 
     const dBase = getFirestore();
     const itemsCollection = collection(dBase, "motos");
-
     getDocs(itemsCollection).then((snapshot) => {
       setProduct(
         snapshot.docs.map((item) => ({ id: item.id, ...item.data() }))
       );
-    });
+    })  
   }, []);
 
-  const filterCat = product.filter((el) => el.categoria === category);
+  const filterCart = product.filter((el) => el.categoria === category);
 
   return (
     <>
       {category ? (
-        <ItemList product={filterCat} categoria={category} />
+        <ItemList product={filterCart} categoria={category} />
       ) : (
         <ItemList product={product} />
       )}

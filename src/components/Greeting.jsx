@@ -17,7 +17,7 @@ const Greeting = () => {
           color={{ base: "rgb(37, 39, 39)", md: "white" }}
           p="20"
         >
-          WELCOME TO THE TRIUMPH SITE
+          BIENVENIDOS AL SITIO DE MOTOS TRIUMPH
         </Heading>
       </Box>
     </>

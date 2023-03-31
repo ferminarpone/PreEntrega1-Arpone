@@ -1,5 +1,11 @@
 import Item from "./Item";
-import { Box, Heading, Grid, Container } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  Grid,
+  Container,
+  CircularProgress,
+} from "@chakra-ui/react";
 
 function ItemList({ product, categoria }) {
   return (
@@ -17,39 +23,53 @@ function ItemList({ product, categoria }) {
           </Heading>
         </Box>
         <Container maxW="6xl">
-          <Heading
-            color="white"
-            fontSize="2xl"
-            pl={{ base: "12", md: "10" }}
-            pt="10"
-          >
-            {categoria ? categoria : "CATALOGO COMPLETO"}
-          </Heading>
-          <Grid
-            templateColumns={{
-              sm: "repeat(1, 1fr)",
-              md: "repeat(2, 1fr)",
-              lg: "repeat(3, 1fr)",
-            }}
-            gap="6"
-            pl={{ base: "0", md: "10" }}
-            pt="5"
-            pr={{ base: "0", md: "10" }}
-          >
-            {product.map((pr) => {
-              return (
-                <Item
-                  key={pr.id}
-                  nombre={pr.nombre}
-                  categoria={pr.categoria}
-                  precio={pr.precio}
-                  id={pr.id}
-                  stock={pr.stock}
-                  img={pr.img}
-                />
-              );
-            })}
-          </Grid>
+          {product == "" ? (
+            <Box h="600px">
+            <CircularProgress
+              isIndeterminate
+              color="gray"
+              display="flex"
+              justifyContent="center"
+              m="80px"
+            />
+            </Box>
+          ) : (
+            <>
+              <Heading
+                color="white"
+                fontSize="2xl"
+                pl={{ base: "12", md: "10" }}
+                pt="10"
+              >
+                {categoria ? categoria : "CATALOGO COMPLETO"}
+              </Heading>
+              <Grid
+                templateColumns={{
+                  sm: "repeat(1, 1fr)",
+                  md: "repeat(2, 1fr)",
+                  lg: "repeat(3, 1fr)",
+                }}
+                gap="6"
+                pl={{ base: "0", md: "10" }}
+                pt="5"
+                pr={{ base: "0", md: "10" }}
+              >
+                {product.map((pr) => {
+                  return (
+                    <Item
+                      key={pr.id}
+                      nombre={pr.nombre}
+                      categoria={pr.categoria}
+                      precio={pr.precio}
+                      id={pr.id}
+                      stock={pr.stock}
+                      img={pr.img}
+                    />
+                  );
+                })}
+              </Grid>
+            </>
+          )}
         </Container>
       </Box>
     </>

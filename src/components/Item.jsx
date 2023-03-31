@@ -30,7 +30,7 @@ function Item({ nombre, precio, id, img }) {
           <CardFooter m="auto">
             <Link to={`/item/${id}`}>
               <Button variant="solid" colorScheme="gray" color="brown">
-                Go to detail
+                Ver detalles
               </Button>
             </Link>
           </CardFooter>

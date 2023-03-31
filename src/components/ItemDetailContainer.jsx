@@ -9,6 +9,7 @@ function ItemDetailContainer() {
   const { id } = useParams();
 
   useEffect(() => {
+    window.scroll(0,0);
     const dBase = getFirestore();
     const itemDoc = doc(dBase, "motos", `${id}`);
     getDoc(itemDoc).then((snapshot) => {

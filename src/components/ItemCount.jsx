@@ -1,10 +1,10 @@
 import { useState, useContext } from "react";
-import { Button, Flex, Text } from "@chakra-ui/react";
+import { Button, Flex, Text, Tooltip } from "@chakra-ui/react";
 import { CarritoContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
 
 function ItemCount({ stock, nombre, precio, id, img }) {
-  const { cart, setCart} = useContext(CarritoContext);
+  const { cart, setCart } = useContext(CarritoContext);
   const [count, setCount] = useState(1);
 
   const newStock = () => {
@@ -15,7 +15,7 @@ function ItemCount({ stock, nombre, precio, id, img }) {
     return stock;
   };
 
-  const add = () => count >= newStock(stock, id) ? alert("Stock insuficiente.") : setCount(count + 1);
+  const add = () => count >= newStock(stock, id)? "":setCount(count + 1);
   const substract = () => (count <= 1 ? setCount(1) : setCount(count - 1));
   const addToCart = () => {
     setCart((cartItems) => {
@@ -58,14 +58,31 @@ function ItemCount({ stock, nombre, precio, id, img }) {
   return (
     <>
       <Flex mb="5" justifyContent="center">
-        <Button onClick={add} h="8" w="10" p="0" fontSize="12" cursor={ count >= newStock()? "not-allowed":"default"}>
-          +
-        </Button>
+        {count>= newStock()?(
+        <Tooltip label="Stock insuficiente" placement="bottom" bg='gray.100' color='black'>
+          <Button
+            onClick={add}
+            h="8"
+            size="xs" 
+            fontSize="12"
+            cursor={count >= newStock() ? "not-allowed" : "default"}
+          >
+            +
+          </Button>
+        </Tooltip>):
+        <Button
+            onClick={add}
+            h="8"
+            size="xs"
+            fontSize="12"
+          >
+            +
+          </Button> }
         <Text
           pt="2"
           h="8"
-          mr="2"
-          ml="2"
+          mr="1"
+          ml="1"
           textAlign="center"
           pr="1"
           pl="1"
@@ -73,13 +90,20 @@ function ItemCount({ stock, nombre, precio, id, img }) {
         >
           {count}
         </Text>
-        <Button onClick={substract} mr="1" h="8" w="10" p="0" fontSize="12" cursor={count <= 1 ? "not-allowed":"default"}>
+        <Button
+          onClick={substract}
+          h="8"
+          size="xs"
+          fontSize="12"
+          mr="2"
+          cursor={count <= 1 ? "not-allowed" : "pointer"}
+        >
           -
         </Button>
         <Button
           onClick={() => setCount(1)}
           h="8"
-          w="17"
+          w="auto"
           p="2"
           mr="2"
           fontSize="12"
@@ -92,13 +116,13 @@ function ItemCount({ stock, nombre, precio, id, img }) {
             variant="solid"
             colorScheme="gray"
             h="8"
-            w="20"
-            p="0"
+            w="auto"
+            p="2"
             fontSize="12"
             color="brown"
             onClick={() => addToCart()}
           >
-            Add to cart
+            Agregar a carrito
           </Button>
         </Link>
       </Flex>

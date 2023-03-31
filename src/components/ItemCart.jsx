@@ -10,6 +10,7 @@ import {
   CardFooter,
   Button,
   GridItem,
+  Tooltip,
 } from "@chakra-ui/react";
 
 import { CarritoContext } from "../context/CartContext";
@@ -24,9 +25,7 @@ const ItemCart = ({ nombre, precio, id, stock, img, cant }) => {
   }, [counter]);
 
   const add = () => {
-    if (counter >= stock) {
-      return alert("Stock insuficiente");
-    } else {
+    if (counter < stock) {
       return setCounter(counter + 1);
     }
   };
@@ -81,7 +80,7 @@ const ItemCart = ({ nombre, precio, id, stock, img, cant }) => {
           />
           <Stack>
             <Heading size="xs">{nombre}</Heading>
-            <Text color="blue.600" fontSize="xs">
+            <Text color="blue.600" fontSize="md">
               € {precio}
             </Text>
           </Stack>
@@ -93,13 +92,44 @@ const ItemCart = ({ nombre, precio, id, stock, img, cant }) => {
           justifyContent="space-between"
         >
           <Box display="flex" alignItems="center">
-            <Button onClick={add} p="0" fontSize="12" size="xs" cursor={ counter >= stock? "not-allowed":"default"}>
-              +
-            </Button>
+            {counter >= stock ? (
+              <Tooltip
+                label="Stock insuficiente"
+                placement="bottom"
+                bg="gray.100"
+                color="black"
+              >
+                <Button
+                  onClick={add}
+                  p="0"
+                  fontSize="12"
+                  size="xs"
+                  cursor={counter >= stock ? "not-allowed" : "default"}
+                >
+                  +
+                </Button>
+              </Tooltip>
+            ) : (
+              <Button
+                onClick={add}
+                p="0"
+                fontSize="12"
+                size="xs"
+                cursor={counter >= stock ? "not-allowed" : "pointer"}
+              >
+                +
+              </Button>
+            )}
             <Text textAlign="center" w="25px" h="6" fontSize="14px">
               {counter}
             </Text>
-            <Button onClick={substract} p="0" fontSize="12" size="xs" cursor={counter <= 1 ? "not-allowed":"default"}>
+            <Button
+              onClick={substract}
+              p="0"
+              fontSize="12"
+              size="xs"
+              cursor={counter <= 1 ? "not-allowed" : "pointer"}
+            >
               -
             </Button>
           </Box>
@@ -127,7 +157,7 @@ const ItemCart = ({ nombre, precio, id, stock, img, cant }) => {
             color="aliceblue"
           >
             {" "}
-            Remove{" "}
+            Eliminar{" "}
           </Button>
         </CardFooter>
       </Card>
