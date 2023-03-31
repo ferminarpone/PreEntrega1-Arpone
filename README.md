@@ -37,6 +37,7 @@ Haciendo click sobre esta opción podras visualizar el catalogo completo de moto
 * **React-icons**: Utilizado para el icono del CartWidget. **- Versión:  "^2.0.17"**
 
 ### DEPLOY DEL SITIO
+---
 https://triumph-site.netlify.app
 
 
@@ -47,6 +48,7 @@ https://triumph-site.netlify.app
 ![Visualizar gif](./src/assets/gif-ecommerce.gif)
 
 ### CONTACTO
+---
 **GitHub** [Repositorio Fermín Arpone](https://github.com/ferminarpone)
 
 **Linkedin** [Perfil de Fermín Arpone](https://www.linkedin.com/in/fermin-arpone-4365a3207/)
