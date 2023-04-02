@@ -6,7 +6,7 @@ import {
   Container,
   CircularProgress,
 } from "@chakra-ui/react";
-import React from 'react'
+import React from 'react';
 
 function ItemList({ product, categoria }) {
   return (

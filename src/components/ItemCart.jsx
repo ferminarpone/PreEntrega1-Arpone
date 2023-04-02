@@ -16,7 +16,6 @@ import { CarritoContext } from "../context/CartContext";
 import { useContext, useState, useEffect } from "react";
 
 const ItemCart = ({ nombre, precio, id, stock, img, cant }) => {
-
   const { cart, setCart } = useContext(CarritoContext);
   const [counter, setCounter] = useState(cant);
   useEffect(() => {

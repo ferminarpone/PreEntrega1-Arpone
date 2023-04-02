@@ -6,12 +6,13 @@ import {
   FormControl,
   FormLabel,
   Button,
-  FormHelperText,
   Heading,
   Box,
   Input,
   InputGroup,
   InputLeftElement,
+  Alert,
+  AlertIcon,
 } from "@chakra-ui/react";
 import { PhoneIcon } from "@chakra-ui/icons";
 
@@ -19,7 +20,9 @@ const CreateOrder = () => {
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const { cart, totalAmount, setOrderId } = useContext(CarritoContext);
+  const [checkEmail, setCheckEmail] = useState("");
+  const [confirmEmail, setConfirmEmail] = useState(true);
+  const { cart, totalAmount, setOrderId, orderId } = useContext(CarritoContext);
   const dBase = getFirestore();
   const orderCollection = collection(dBase, "orden");
   const order = {
@@ -34,14 +37,22 @@ const CreateOrder = () => {
     })),
     total: `€ ${totalAmount()}`,
   };
+  
   //Función que devuelve el id creado en Firebase para el usuario.
   const handleSubmit = (e) => {
     e.preventDefault();
-    addDoc(orderCollection, order).then(({ id }) => setOrderId(id));
+    emailCheck();
   };
 
-  //Función que vuelve al inicio de la pagina.
-  const upWindow = () => window.scroll(0, 0);
+  // Función que confirma que ambos correos sean iguales.
+  const emailCheck = () => {
+    if (email === checkEmail) {
+      addDoc(orderCollection, order).then(({ id }) => setOrderId(id));
+      window.scroll(0, 0);
+    } else {
+      setConfirmEmail(false);
+    }
+  };
 
   return (
     <Box
@@ -75,9 +86,12 @@ const CreateOrder = () => {
             type="email"
             onChange={(e) => setEmail(e.target.value)}
           />
-          <FormHelperText>
-            En ningun caso compartiremos tu Email.
-          </FormHelperText>
+          <FormLabel mt="2">Confirmar dirección de Email</FormLabel>
+          <Input
+            size="md"
+            type="email"
+            onChange={(e) => setCheckEmail(e.target.value)}
+          />
         </FormControl>
         <FormLabel mt="1">Teléfono</FormLabel>
         <InputGroup>
@@ -87,6 +101,14 @@ const CreateOrder = () => {
           />
           <Input type="tel" placeholder="Número de telefono" />
         </InputGroup>
+        {confirmEmail === false ? (
+          <Alert status="error" mt="2" height="30px">
+            <AlertIcon />
+            Los correos electronicos deben coincidir.
+          </Alert>
+        ) : (
+          ""
+        )}
         <Button
           type="submit"
           h="6"
@@ -94,7 +116,6 @@ const CreateOrder = () => {
           color="aliceblue"
           _hover={{ color: "rgb(55, 55, 230)", bg: "gray.200" }}
           mt="3"
-          onClick={upWindow}
         >
           Comprar
         </Button>

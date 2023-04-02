@@ -8,7 +8,8 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
 const Cart = () => {
-  const { cart, setCart, totalAmount, orderId, setOrderId } = useContext(CarritoContext);
+  const { cart, setCart, totalAmount, orderId, setOrderId } =
+    useContext(CarritoContext);
   useEffect(() => {
     window.scroll(0, 0);
   }, []);

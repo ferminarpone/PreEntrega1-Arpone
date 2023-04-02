@@ -7,9 +7,9 @@ import { doc, getDoc, getFirestore } from "firebase/firestore";
 function ItemDetailContainer() {
   const [product, setProduct] = useState([]);
   const { id } = useParams();
-//Llamado a la DB.
+  //Llamado a la DB.
   useEffect(() => {
-    window.scroll(0,0);
+    window.scroll(0, 0);
     const dBase = getFirestore();
     const itemDoc = doc(dBase, "motos", `${id}`);
     getDoc(itemDoc).then((snapshot) => {

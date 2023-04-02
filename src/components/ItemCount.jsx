@@ -2,7 +2,6 @@ import { useState, useContext } from "react";
 import { Button, Flex, Text, Tooltip } from "@chakra-ui/react";
 import { CarritoContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
-
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
@@ -53,7 +52,6 @@ function ItemCount({ stock, nombre, precio, id, img }) {
               popup: 'containerClass',
             }
           });
-
           return cartItems;
         }
       } else {
@@ -78,7 +76,6 @@ function ItemCount({ stock, nombre, precio, id, img }) {
       return "/cart";
     }
   };
-
   return (
     <>
       <Flex mb="5" justifyContent="center">

@@ -12,9 +12,11 @@ const CartContext = ({ children }) => {
     );
     return parcial.reduce((acc, prod) => acc + prod, 0).toLocaleString("de-DE");
   };
-  
+
   return (
-    <CarritoContext.Provider value={{ cart, setCart, totalAmount, orderId, setOrderId}}>
+    <CarritoContext.Provider
+      value={{ cart, setCart, totalAmount, orderId, setOrderId }}
+    >
       {children}
     </CarritoContext.Provider>
   );
