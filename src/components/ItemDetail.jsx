@@ -32,7 +32,7 @@ function ItemDetail({ product }) {
         >
           <Image
             objectFit="cover"
-            maxW={{ base: "80%", sm: "100%", md: "60%", lg: "70%" }}
+            maxW={{ base: "100%", sm: "80%", md: "60%", lg: "70%" }}
             src={product.img}
             alt={product.nombre}
           />
