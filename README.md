@@ -47,7 +47,7 @@ https://triumph-site.netlify.app
 ### GIF EN EL QUE SE EJEMPLIFICA LA NAVEGABILIDAD DE LA APLICACIÓN
 ---
 
-![Visualizar gif](./src/assets/gif-ecommerce.gif)
+![Visualizar gif](./src/assets/GIF.gif)
 
 ### CONTACTO
 ---
