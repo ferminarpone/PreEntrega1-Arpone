@@ -47,10 +47,10 @@ function ItemCount({ stock, nombre, precio, id, img }) {
             showConfirmButton: false,
             showCloseButton: true,
             customClass: {
-              icon: 'iconClass',
-              title:'titleClass',
-              popup: 'containerClass',
-            }
+              icon: "iconClass",
+              title: "titleClass",
+              popup: "containerClass",
+            },
           });
           return cartItems;
         }
@@ -79,28 +79,15 @@ function ItemCount({ stock, nombre, precio, id, img }) {
   return (
     <>
       <Flex mb="5" justifyContent="center">
-        {count >= newStock() ? (
-          <Tooltip
-            label="Stock insuficiente"
-            placement="bottom"
-            bg="gray.100"
-            color="black"
-          >
-            <Button
-              onClick={add}
-              h="8"
-              size="xs"
-              fontSize="12"
-              cursor={count >= newStock() ? "not-allowed" : "default"}
-            >
-              +
-            </Button>
-          </Tooltip>
-        ) : (
-          <Button onClick={add} h="8" size="xs" fontSize="12">
-            +
-          </Button>
-        )}
+        <Button
+          onClick={substract}
+          h="8"
+          size="xs"
+          fontSize="12"
+          cursor={count <= 1 ? "not-allowed" : "pointer"}
+        >
+          -
+        </Button>
         <Text
           pt="2"
           h="8"
@@ -113,16 +100,30 @@ function ItemCount({ stock, nombre, precio, id, img }) {
         >
           {count}
         </Text>
-        <Button
-          onClick={substract}
-          h="8"
-          size="xs"
-          fontSize="12"
-          mr="2"
-          cursor={count <= 1 ? "not-allowed" : "pointer"}
-        >
-          -
-        </Button>
+        {count >= newStock() ? (
+          <Tooltip
+            label="Stock insuficiente"
+            placement="bottom"
+            bg="gray.100"
+            color="black"
+          >
+            <Button
+              onClick={add}
+              h="8"
+              size="xs"
+              fontSize="12"
+              mr="2"
+              cursor={count >= newStock() ? "not-allowed" : "default"}
+            >
+              +
+            </Button>
+          </Tooltip>
+        ) : (
+          <Button onClick={add} mr="2" h="8" size="xs" fontSize="12">
+            +
+          </Button>
+        )}
+
         <Button
           onClick={() => setCount(1)}
           h="8"

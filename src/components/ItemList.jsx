@@ -7,8 +7,12 @@ import {
   CircularProgress,
 } from "@chakra-ui/react";
 import React from 'react';
+import {useEffect} from 'react';
 
 function ItemList({ product, categoria }) {
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
   return (
     <>
       <Box bg="rgb(37, 39, 39)" pb="10">
